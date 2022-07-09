@@ -69,6 +69,7 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.64",
     "@electron-forge/maker-zip": "^6.0.0-beta.64",
     "@electron-forge/plugin-webpack": "6.0.0-beta.64",
+    "@types/bootstrap": "^5.1.12",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "@vercel/webpack-asset-relocator-loader": "1.7.0",
@@ -78,11 +79,18 @@
     "eslint-plugin-import": "^2.25.0",
     "fork-ts-checker-webpack-plugin": "^7.2.1",
     "node-loader": "^2.0.0",
+    "sass": "^1.53.0",
+    "sass-loader": "^13.0.2",
     "style-loader": "^3.0.0",
     "ts-loader": "^9.2.2",
-    "typescript": "~4.5.4"
+    "typescript": "~4.5.4",
+    "webpack": "^5.73.0"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "@fontsource/open-sans": "^4.5.10",
+    "@types/knockout": "^3.4.72",
+    "bootstrap": "^5.2.0-beta1",
+    "electron-squirrel-startup": "^1.0.0",
+    "knockout": "^3.5.1"
   }
 }
