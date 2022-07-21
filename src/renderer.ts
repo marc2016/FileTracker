@@ -26,6 +26,11 @@
  * ```
  */
 
-import './index.sass';
+const $ = require('jquery')
+import ko from 'knockout'
 
-console.log('👋 This message is being logged by "renderer.js", included via webpack');
+import './index.sass'
+import { FileTrackerViewModel } from './ViewModels/FileTrackerViewModel'
+
+const fileTrackerVideModel = new FileTrackerViewModel()
+ko.applyBindings(fileTrackerVideModel, $('#FileTrackerView')[0])

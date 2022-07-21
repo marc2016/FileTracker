@@ -70,6 +70,7 @@
     "@electron-forge/maker-zip": "^6.0.0-beta.64",
     "@electron-forge/plugin-webpack": "6.0.0-beta.64",
     "@types/bootstrap": "^5.1.12",
+    "@types/jquery": "^3.5.14",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "@vercel/webpack-asset-relocator-loader": "1.7.0",
@@ -79,6 +80,8 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.0",
     "fork-ts-checker-webpack-plugin": "^7.2.1",
+    "html-loader": "^4.1.0",
+    "html-webpack-plugin": "^5.5.0",
     "node-loader": "^2.0.0",
     "prettier": "2.7.1",
     "prettier-eslint": "^15.0.1",
@@ -97,6 +100,7 @@
     "@types/knockout": "^3.4.72",
     "bootstrap": "^5.2.0-beta1",
     "electron-squirrel-startup": "^1.0.0",
+    "jquery": "^3.6.0",
     "knockout": "^3.5.1"
   }
 }

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
     <meta charset="UTF-8" />
     <title>Hello World!</title>
   </head>
@@ -14,13 +13,13 @@
         tabindex="-1"
       >
         <img
-          src="icons/logo.png"
+          src="Resources/Logo.png"
           width="25"
           height="25"
           alt=""
           class="d-inline-block logo"
         />
-        TimeTracker
+        FileTracker
       </div>
       <div class="navbar-collapse collapse" id="navbarNav">
         <ul class="nav navbar-nav ml-auto">
@@ -69,5 +68,8 @@
         </ul>
       </div>
     </nav>
+    <div id="FileTrackerViewContainer" class="content-container">
+      <%= require('html-loader!./Views/FileTrackerView.html').default %>
+    </div>
   </body>
 </html>
