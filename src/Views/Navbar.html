@@ -1,0 +1,141 @@
+<nav id="MainNavBar" class="navbar navbar-expand-sm navbar-dark navbar-expand">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img
+        src="../Resources/Logo.png"
+        alt=""
+        width="30"
+        height="24"
+        class="d-inline-block align-text-top"
+      />
+      FileTracker
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li> -->
+      </ul>
+    </div>
+    <ul class="d-flex justify-content-end navbar-nav">
+      <li class="nav-item">
+        <a
+          class="nav-link navbar-forground"
+          href="#"
+          data-target="#modalAbout"
+          data-toggle="modal"
+          tabindex="-1"
+        >
+          <i class="fas fa-info-circle"></i><span>&zwnj;</span>
+        </a>
+      </li>
+      <div class="navbar-seperator"></div>
+      <li class="nav-item">
+        <a
+          class="nav-link navbar-forground"
+          href="#"
+          data-bind="click: minimizeWindow"
+          tabindex="-1"
+        >
+          <i class="fas fa-window-minimize"></i><span>&zwnj;</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link navbar-forground"
+          href="#"
+          data-bind="click: maximizeWindow"
+          tabindex="-1"
+        >
+          <i class="fas fa-window-maximize"></i><span>&zwnj;</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link navbar-forground"
+          href="#"
+          data-bind="click: closeWindow"
+          tabindex="-1"
+        >
+          <i class="fas fa-window-close"></i><span>&zwnj;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- <nav class="navbar navbar-expand-sm fixed-top navbar-dark">
+  <div
+    class="navbar-brand navbar-forground navbar-forground-logo"
+    data-bind="click: openTimerList"
+    style="cursor: pointer"
+    tabindex="-1"
+  >
+    <img
+      src="../Resources/Logo.png"
+      width="25"
+      height="25"
+      alt=""
+      class="d-inline-block logo"
+    />
+    FileTracker
+  </div>
+  <div class="navbar-collapse collapse" id="navbarNav">
+    <ul class="mr-auto"></ul>
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link navbar-forground"
+          href="#"
+          data-target="#modalAbout"
+          data-toggle="modal"
+          tabindex="-1"
+        >
+          <i class="fas fa-info-circle"></i><span>&zwnj;</span>
+        </a>
+      </li>
+      <div class="navbar-seperator"></div>
+      <li class="nav-item">
+        <a
+          class="nav-link navbar-forground"
+          href="#"
+          data-bind="click: minimizeWindow"
+          tabindex="-1"
+        >
+          <i class="fas fa-window-minimize"></i><span>&zwnj;</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link navbar-forground"
+          href="#"
+          data-bind="click: maximizeWindow"
+          tabindex="-1"
+        >
+          <i class="fas fa-window-maximize"></i><span>&zwnj;</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link navbar-forground"
+          href="#"
+          data-bind="click: closeWindow"
+          tabindex="-1"
+        >
+          <i class="fas fa-window-close"></i><span>&zwnj;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav> -->

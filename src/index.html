@@ -2,72 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
+    <title>FileTracker</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm fixed-top navbar-dark">
-      <div
-        class="navbar-brand navbar-forground navbar-forground-logo"
-        data-bind="click: openTimerList"
-        style="cursor: pointer"
-        tabindex="-1"
-      >
-        <img
-          src="Resources/Logo.png"
-          width="25"
-          height="25"
-          alt=""
-          class="d-inline-block logo"
-        />
-        FileTracker
-      </div>
-      <div class="navbar-collapse collapse" id="navbarNav">
-        <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item">
-            <a
-              class="nav-link navbar-forground"
-              href="#"
-              data-target="#modalAbout"
-              data-toggle="modal"
-              tabindex="-1"
-            >
-              <i class="fas fa-info-circle"></i><span>&zwnj;</span>
-            </a>
-          </li>
-          <div class="navbar-seperator"></div>
-          <li class="nav-item">
-            <a
-              class="nav-link navbar-forground"
-              href="#"
-              data-bind="click: minimizeWindow"
-              tabindex="-1"
-            >
-              <i class="fas fa-window-minimize"></i><span>&zwnj;</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link navbar-forground"
-              href="#"
-              data-bind="click: maximizeWindow"
-              tabindex="-1"
-            >
-              <i class="fas fa-window-maximize"></i><span>&zwnj;</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link navbar-forground"
-              href="#"
-              data-bind="click: closeWindow"
-              tabindex="-1"
-            >
-              <i class="fas fa-window-close"></i><span>&zwnj;</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <%= require('html-loader!./Views/Navbar.html').default %>
     <div id="FileTrackerViewContainer" class="content-container">
       <%= require('html-loader!./Views/FileTrackerView.html').default %>
     </div>
