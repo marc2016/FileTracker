@@ -31,6 +31,10 @@ import ko from 'knockout'
 
 import './index.sass'
 import { FileTrackerViewModel } from './ViewModels/FileTrackerViewModel'
+import { MainWindowViewModel } from './ViewModels/MainWindowViewModel'
+
+const mainWindowViewModel = new MainWindowViewModel()
+ko.applyBindings(mainWindowViewModel, $('#MainNavBar')[0])
 
 const fileTrackerVideModel = new FileTrackerViewModel()
 ko.applyBindings(fileTrackerVideModel, $('#FileTrackerView')[0])

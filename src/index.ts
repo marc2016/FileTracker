@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 
 import * as bootstrap from 'bootstrap'
 
@@ -21,6 +21,7 @@ const createWindow = (): void => {
   const mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
+    minWidth: 630,
     frame: false,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
@@ -32,6 +33,16 @@ const createWindow = (): void => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
+
+  ipcMain.on('window-operations', (event, arg) => {
+    if (arg == 'close') {
+      mainWindow.close()
+    } else if (arg == 'minimize') {
+      mainWindow.minimize()
+    } else if (arg == 'maximize') {
+      mainWindow.maximize()
+    }
+  })
 }
 
 // This method will be called when Electron has finished
