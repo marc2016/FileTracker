@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "target": "ES2021",
     "allowJs": true,
     "module": "commonjs",
     "skipLibCheck": true,
@@ -11,7 +12,12 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "paths": {
-      "*": ["node_modules/*"]
+      "*": ["node_modules/*"],
+      "models/*": ["src/models/*"],
+      "viewModels/*": ["src/viewModels/*"],
+      "views/*": ["src/views/*"],
+      "domain/*": ["src/domain/*"],
+      "services/*": ["src/services/*"]
     }
   },
   "include": ["src/**/*"]

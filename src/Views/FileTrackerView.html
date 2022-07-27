@@ -5,7 +5,7 @@
         <button
           type="button"
           class="btn btn-primary"
-          data-bind="click: lockSync"
+          data-bind="click: lockSync, enable: TrackerStatus() == 1"
         >
           Lock
         </button>
@@ -14,7 +14,7 @@
         <button
           type="button"
           class="btn btn-primary"
-          data-bind="click: syncFiles"
+          data-bind="click: syncFiles, enable: TrackerStatus() == 2"
         >
           Sync
         </button>
@@ -23,7 +23,7 @@
         <button
           type="button"
           class="btn btn-primary"
-          data-bind="click: startProgram"
+          data-bind="click: startProgram, enable: TrackerStatus() == 3"
         >
           Start program
         </button>
@@ -32,7 +32,7 @@
         <button
           type="button"
           class="btn btn-primary"
-          data-bind="click: syncFiles"
+          data-bind="click: syncFiles, enable: TrackerStatus() == 4"
         >
           Sync
         </button>
@@ -41,7 +41,7 @@
         <button
           type="button"
           class="btn btn-primary"
-          data-bind="click: unlockSync"
+          data-bind="click: unlockSync, enable: TrackerStatus() == 5"
         >
           Unlock
         </button>

@@ -30,8 +30,8 @@ const $ = require('jquery')
 import ko from 'knockout'
 
 import './index.sass'
-import { FileTrackerViewModel } from './ViewModels/FileTrackerViewModel'
-import { MainWindowViewModel } from './ViewModels/MainWindowViewModel'
+import { FileTrackerViewModel } from 'viewModels/FileTrackerViewModel'
+import { MainWindowViewModel } from 'viewModels/MainWindowViewModel'
 
 const mainWindowViewModel = new MainWindowViewModel()
 ko.applyBindings(mainWindowViewModel, $('#MainNavBar')[0])
