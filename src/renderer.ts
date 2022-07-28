@@ -36,5 +36,6 @@ import { MainWindowViewModel } from 'viewModels/MainWindowViewModel'
 const mainWindowViewModel = new MainWindowViewModel()
 ko.applyBindings(mainWindowViewModel, $('#MainNavBar')[0])
 
+const syncService = window.services.syncService
 const fileTrackerVideModel = new FileTrackerViewModel()
 ko.applyBindings(fileTrackerVideModel, $('#FileTrackerView')[0])
