@@ -32,10 +32,20 @@ import ko from 'knockout'
 import './index.sass'
 import { FileTrackerViewModel } from 'viewModels/FileTrackerViewModel'
 import { MainWindowViewModel } from 'viewModels/MainWindowViewModel'
+import { SyncSettingsViewModel } from 'viewModels/SyncSettingsViewModel'
 
 const mainWindowViewModel = new MainWindowViewModel()
 ko.applyBindings(mainWindowViewModel, $('#MainNavBar')[0])
 
+const accountService = window.services.accountService
+const syncSettingsViewModel = new SyncSettingsViewModel(accountService)
+ko.applyBindings(syncSettingsViewModel, $('#SyncSettingsView')[0])
+syncSettingsViewModel.show()
+
 const syncService = window.services.syncService
-const fileTrackerVideModel = new FileTrackerViewModel()
+const fileTrackerVideModel = new FileTrackerViewModel(
+  syncService,
+  accountService
+)
 ko.applyBindings(fileTrackerVideModel, $('#FileTrackerView')[0])
+fileTrackerVideModel.show()

@@ -1,0 +1,62 @@
+<div
+  id="SyncSettingsView"
+  class="content-container"
+  data-bind="visible: isVisible"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <label for="exampleFormControlInput1" class="form-label">
+          Benutzername
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Benutzername"
+          data-bind="textInput: username"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1" class="form-label">
+          Passwort
+        </label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Passwort"
+          data-bind="textInput: password"
+        />
+      </div>
+    </div>
+    <div class="row pt-3">
+      <div class="col">
+        <label for="exampleFormControlInput1" class="form-label">
+          Server URL
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Server URL"
+          data-bind="textInput: host"
+        />
+      </div>
+    </div>
+    <div class="row pt-3">
+      <div class="col">
+        <label for="exampleFormControlInput1" class="form-label">
+          Lokaler Pfad
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Lokaler Pfad"
+          data-bind="textInput: localDataPath"
+        />
+      </div>
+    </div>
+  </div>
+</div>

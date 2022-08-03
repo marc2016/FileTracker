@@ -3,6 +3,8 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { AccountService } from 'services/AccountService'
 import { FtpSyncService } from 'services/FtpSyncService'
+import { IAccountService } from 'services/IAccountService'
+import { ISyncService } from 'services/ISyncService'
 
 contextBridge.exposeInMainWorld('windowOperations', {
   close: () => ipcRenderer.send('window-operations', 'close'),
@@ -10,8 +12,8 @@ contextBridge.exposeInMainWorld('windowOperations', {
   maximize: () => ipcRenderer.send('window-operations', 'maximize'),
 })
 
-const syncService = new FtpSyncService()
-const accountService = new AccountService()
+const accountService: IAccountService = new AccountService()
+const syncService: ISyncService = new FtpSyncService(accountService)
 
 contextBridge.exposeInMainWorld('services', {
   syncService: syncService,

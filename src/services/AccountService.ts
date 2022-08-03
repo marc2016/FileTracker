@@ -2,30 +2,34 @@ import Store from 'electron-store'
 import { IAccountService } from './IAccountService'
 
 export class AccountService implements IAccountService {
-  private readonly _Store = new Store()
+  private _Store: any = null
 
-  getUsername(): string {
+  constructor() {
+    this._Store = new Store()
+  }
+
+  getUsername = () => {
     return <string>this._Store.get('username')
   }
-  setUsername(username: string): void {
+  setUsername = (username: string) => {
     this._Store.set('username', username)
   }
-  getPassword(): string {
+  getPassword = () => {
     return <string>this._Store.get('password')
   }
-  setPassword(password: string): void {
+  setPassword = (password: string) => {
     this._Store.set('password', password)
   }
-  getHost(): string {
+  getHost = () => {
     return <string>this._Store.get('host')
   }
-  setHost(host: string): void {
+  setHost = (host: string) => {
     this._Store.set('host', host)
   }
-  getLocalDataPath(): string {
+  getLocalDataPath = () => {
     return <string>this._Store.get('localDataPath')
   }
-  setLocalDataPath(path: string): void {
+  setLocalDataPath = (path: string) => {
     this._Store.set('localDataPath', path)
   }
 }

@@ -5,9 +5,8 @@
     <title>FileTracker</title>
   </head>
   <body>
-    <%= require('html-loader!./views/Navbar.html').default %>
-    <div id="FileTrackerViewContainer" class="content-container">
-      <%= require('html-loader!./views/FileTrackerView.html').default %>
-    </div>
+    <%= require('html-loader!./views/Navbar.html').default %> <%=
+    require('html-loader!./views/FileTrackerView.html').default %> <%=
+    require('html-loader!./views/SyncSettingsView.html').default %>
   </body>
 </html>
