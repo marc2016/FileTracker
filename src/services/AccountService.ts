@@ -26,6 +26,12 @@ export class AccountService implements IAccountService {
   setHost = (host: string) => {
     this._Store.set('host', host)
   }
+  getPort = () => {
+    return <number>this._Store.get('port')
+  }
+  setPort = (port: number) => {
+    this._Store.set('port', port)
+  }
   getLocalDataPath = () => {
     return <string>this._Store.get('localDataPath')
   }

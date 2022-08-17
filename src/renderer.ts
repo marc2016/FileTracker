@@ -26,7 +26,7 @@
  * ```
  */
 
-const $ = require('jquery')
+import $ from 'jquery'
 import ko from 'knockout'
 
 import './index.sass'
@@ -48,4 +48,5 @@ const fileTrackerVideModel = new FileTrackerViewModel(
   accountService
 )
 ko.applyBindings(fileTrackerVideModel, $('#FileTrackerView')[0])
+ko.applyBindings(fileTrackerVideModel, $('#FileTrackerSyncModal')[0])
 fileTrackerVideModel.show()

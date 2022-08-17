@@ -37,6 +37,15 @@ export class SyncSettingsViewModel extends ViewModelBase {
     },
     owner: this,
   })
+  port: ko.PureComputed<number> = ko.pureComputed({
+    read: function () {
+      return this._accountService.getPort()
+    },
+    write: function (value) {
+      this._accountService.setPort(value)
+    },
+    owner: this,
+  })
   localDataPath: ko.PureComputed<string> = ko.pureComputed({
     read: function () {
       return this._accountService.getLocalDataPath()
