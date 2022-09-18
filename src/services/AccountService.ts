@@ -38,4 +38,10 @@ export class AccountService implements IAccountService {
   setLocalDataPath = (path: string) => {
     this._Store.set('localDataPath', path)
   }
+  getProgramPath = () => {
+    return <string>this._Store.get('programPath')
+  }
+  setProgramPath = (path: string) => {
+    this._Store.set('programPath', path)
+  }
 }

@@ -39,13 +39,15 @@ ko.applyBindings(mainWindowViewModel, $('#MainNavBar')[0])
 
 const accountService = window.services.accountService
 const syncSettingsViewModel = new SyncSettingsViewModel(accountService)
+const programProcessService = window.services.programService
 ko.applyBindings(syncSettingsViewModel, $('#SyncSettingsView')[0])
 syncSettingsViewModel.show()
 
 const syncService = window.services.syncService
 const fileTrackerVideModel = new FileTrackerViewModel(
   syncService,
-  accountService
+  accountService,
+  programProcessService
 )
 ko.applyBindings(fileTrackerVideModel, $('#FileTrackerView')[0])
 ko.applyBindings(fileTrackerVideModel, $('#FileTrackerSyncModal')[0])

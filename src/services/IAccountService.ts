@@ -9,4 +9,6 @@ export interface IAccountService {
   setPort(port: number): void
   getLocalDataPath(): string
   setLocalDataPath(path: string): void
+  getProgramPath(): string
+  setProgramPath(path: string): void
 }

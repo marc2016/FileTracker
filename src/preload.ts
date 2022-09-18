@@ -4,7 +4,9 @@ import { contextBridge, ipcRenderer } from 'electron'
 import { AccountService } from 'services/AccountService'
 import { FtpSyncService } from 'services/FtpSyncService'
 import { IAccountService } from 'services/IAccountService'
+import { IProgramProcessService } from 'services/IProgramProcessService'
 import { ISyncService } from 'services/ISyncService'
+import { ProgramProcessService } from 'services/ProgramProcessService'
 
 contextBridge.exposeInMainWorld('windowOperations', {
   close: () => ipcRenderer.send('window-operations', 'close'),
@@ -14,8 +16,11 @@ contextBridge.exposeInMainWorld('windowOperations', {
 
 const accountService: IAccountService = new AccountService()
 const syncService: ISyncService = new FtpSyncService(accountService)
+const programProcessService: IProgramProcessService =
+  new ProgramProcessService()
 
 contextBridge.exposeInMainWorld('services', {
   syncService: syncService,
   accountService: accountService,
+  programService: programProcessService,
 })

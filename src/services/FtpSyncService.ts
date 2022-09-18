@@ -57,8 +57,12 @@ export class FtpSyncService implements ISyncService {
     return true
   }
 
-  unlock: () => Promise<boolean> = (force?: boolean) => {
-    throw new Error('Method not implemented.')
+  unlock: (force?: boolean) => Promise<boolean> = async (force?: boolean) => {
+    var lockingUser = await this.checkLock()
+    var userName = lockingUser.name
+    if (!force && this._AccountService.getUsername() != userName) return false
+    await this._client.delete(LOCK_FILE_NAME)
+    return true
   }
 
   sync: (fileInfoCompareList: FileInfoCompare[]) => Promise<void> = async (
@@ -92,7 +96,7 @@ export class FtpSyncService implements ISyncService {
           )
           await this.refreshLocalFileStats(
             fileInfoCompare.localFileInfo.path,
-            remotePath
+            fileInfoCompare.remoteFileInfo.path
           )
           break
         default:

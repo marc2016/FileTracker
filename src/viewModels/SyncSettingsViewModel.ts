@@ -55,4 +55,13 @@ export class SyncSettingsViewModel extends ViewModelBase {
     },
     owner: this,
   })
+  programPath: ko.PureComputed<string> = ko.pureComputed({
+    read: function () {
+      return this._accountService.getProgramPath()
+    },
+    write: function (value) {
+      this._accountService.setProgramPath(value)
+    },
+    owner: this,
+  })
 }

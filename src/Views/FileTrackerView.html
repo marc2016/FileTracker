@@ -28,7 +28,7 @@
         <button
           type="button"
           class="btn btn-primary"
-          data-bind="click: syncFiles, enable: TrackerStatus() == 2"
+          data-bind="click: syncFilesBeforeProgram, enable: TrackerStatus() == 2"
         >
           Sync
         </button>
@@ -46,9 +46,9 @@
         <button
           type="button"
           class="btn btn-primary"
-          data-bind="click: syncFiles, enable: TrackerStatus() == 5"
+          data-bind="click: syncFilesAfterProgram, enable: TrackerStatus() == 4 && programProcesses().length <= 0"
         >
-          Sync
+          Sync zurück
         </button>
       </div>
       <div class="col">

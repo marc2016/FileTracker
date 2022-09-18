@@ -11,19 +11,33 @@ import { fstat } from 'original-fs'
 import { FileInfoCompare } from 'domain/FileInfoCompare'
 import { FileInfo } from 'domain/FileInfo'
 import bootstrap from 'bootstrap'
+import { ProgramProcess } from 'services/ProgramProcess'
+import { IProgramProcess } from 'services/IProgramProcess'
+import { IProgramProcessService } from 'services/IProgramProcessService'
 
 export class FileTrackerViewModel extends ViewModelBase {
   private _syncService: ISyncService
   private _accountService: IAccountService
+  private _programProcessService: IProgramProcessService
 
   private _lockCheckInterval: NodeJS.Timer
 
   private _fileTrackerSyncModal: bootstrap.Modal
 
-  constructor(syncService: ISyncService, accountService: IAccountService) {
+  private _nextStatusAfterSync: TrackerStatus = TrackerStatus.None
+
+  constructor(
+    syncService: ISyncService,
+    accountService: IAccountService,
+    programProcessService: IProgramProcessService
+  ) {
     super()
     this._syncService = syncService
     this._accountService = accountService
+    this._programProcessService = programProcessService
+
+    this.programProcesses = ko.observableArray()
+
     this.startLockCheckInterval()
     this._fileTrackerSyncModal = new bootstrap.Modal('#FileTrackerSyncModal')
   }
@@ -39,6 +53,8 @@ export class FileTrackerViewModel extends ViewModelBase {
   compareFiles: ko.ObservableArray<FileInfoCompare> = ko.observableArray()
 
   syncReady: ko.Observable<boolean> = ko.observable(false)
+
+  programProcesses: ko.ObservableArray<IProgramProcess>
 
   async lockSync() {
     var lockingUser = await this._syncService.checkLock()
@@ -58,7 +74,18 @@ export class FileTrackerViewModel extends ViewModelBase {
   }
   async unlockSync() {
     await this._syncService.unlock()
+    this.currentLockingUser('')
     this.TrackerStatus(TrackerStatus.Unlocked)
+  }
+
+  async syncFilesBeforeProgram() {
+    this._nextStatusAfterSync = TrackerStatus.Synced
+    await this.syncFiles()
+  }
+
+  async syncFilesAfterProgram() {
+    this._nextStatusAfterSync = TrackerStatus.SyncedBack
+    await this.syncFiles()
   }
 
   async syncFiles() {
@@ -66,6 +93,7 @@ export class FileTrackerViewModel extends ViewModelBase {
     var localFiles = await this._syncService.getLocalFiles()
     var remoteFiles = await this._syncService.getRemoteFiles()
 
+    this.compareFiles.removeAll()
     _.forEach(localFiles, (localFile) => {
       var remoteFile = <FileInfo>_.find(remoteFiles, (rf) => {
         return rf.name == localFile.name
@@ -76,18 +104,24 @@ export class FileTrackerViewModel extends ViewModelBase {
     })
 
     this._fileTrackerSyncModal.show()
-    this._syncService.sync(this.compareFiles())
-
+    await this._syncService.sync(this.compareFiles())
     this.syncReady(true)
   }
+
   startProgram() {
-    console.info('startProgram')
+    const programProcess = this._programProcessService.newProgramProcess(
+      this._accountService.getProgramPath()
+    )
+    programProcess.onCloseEvent().one(this.programClosed.bind(this))
+    this.programProcesses.push(programProcess)
+    programProcess.start()
   }
 
   confirmSyncResult() {
     this._fileTrackerSyncModal.hide()
 
-    this.TrackerStatus(TrackerStatus.Synced)
+    this.TrackerStatus(this._nextStatusAfterSync)
+    this._nextStatusAfterSync = TrackerStatus.None
   }
 
   private async startLockCheckInterval() {
@@ -100,6 +134,8 @@ export class FileTrackerViewModel extends ViewModelBase {
   }
 
   private async checkLock() {
+    if (this.TrackerStatus() >= 4) return
+
     var lockingUser = await this._syncService.checkLock()
     if (lockingUser == null) {
       this.TrackerStatus(TrackerStatus.Unlocked)
@@ -113,6 +149,12 @@ export class FileTrackerViewModel extends ViewModelBase {
       this.currentLockingUser(lockingUser.name)
       this.currentLockedSince(format(lockingUser.LockDate, 'dd.MM.yyyy, HH:mm'))
     }
+  }
+
+  private programClosed(programProcess: IProgramProcess, code: number) {
+    this.programProcesses.remove((item) => {
+      return programProcess.processId() == item.processId()
+    })
   }
 
   delay(ms: number) {
